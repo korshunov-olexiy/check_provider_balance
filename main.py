@@ -11,7 +11,7 @@ options = Options()
 options.add_argument("--headless")
 # if chromedriver not found - load it
 driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
-# load page of SITV rovider
+# load page of SITV provider
 driver.get('https://stat.sitv.com.ua')
 
 login = driver.find_element_by_name("login")
