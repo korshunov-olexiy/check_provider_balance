@@ -48,7 +48,10 @@ try:
     date_exired = datetime.strptime(driver.find_element_by_xpath("/html/body/div[3]/div[5]/div/table/tbody/tr[2]/td[2]/p").text, "%d/%m/%Y")
     date_now = datetime.now()
     date_compare = (date_exired - date_now).days
-    ShowMessage('Завершение работы', f"Интернет отключится через {date_compare} дня(ней).\nСумма на счету {sum_count}" if date_compare >= 0 else "Интернет уже отключен. Пополните ваш счет", CONST.MB_OK | CONST.ICON_INFO)
+    if date_compare == 1"
+        ShowMessage('Время действовать', f"Интернет отключится через {date_compare} день.\nСумма на счету {sum_count}", CONST.MB_OK | CONST.ICON_INFO)
+    if date_compare <= 0:
+        ShowMessage('Надо шо-то делать', f"Похоже интернет уже отключен.\nСумма на счету {sum_count}", CONST.MB_OK | CONST.ICON_INFO)
 except TimeoutException:
     ShowMessage('Произошла ошибка', "Не смог зайти в личный кабинет.")
 
